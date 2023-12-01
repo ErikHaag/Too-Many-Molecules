@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Too Many Chemicals</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <img src="TMM.png">
+    <h2>Interactive Compound Viewer</h2>
+    <div style="display: flex;">
+        <canvas></canvas>
+        <div>
+            <button id="selectPubchem" class="tab">Pubchem</button>
+            <button id="selectAtoms" class="tab">Atoms</button>
+            <button id="selectBonds" class="tab">Bonds</button>
+            <div style="display: flex;">
+                <div class="widthTransistion" id="pubchemPage" style="width: 500px;">
+                    <label for="cid">Enter <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank">Pubchem</a>
+                        Chemical ID</label><br>
+                    <input type="number" id="cid" value="1183"><br>
+                    <button id="getFromPubchem" class="btn btn-success">Retrieve</button>
+                    <p id="compoundLabel">Press Display to update...</p>
+                </div>
+                <div class="widthTransistion" id="addAtomsPage" style="width: 0px;">
+                    <label for="elementSelect">Element</label>
+                    <select id="elementSelect">
+                        <optgroup label="Row 1">
+                            <option value="H">H</option>
+                            <option value="He">He</option>
+                        </optgroup>
+                        <optgroup label="Row 2">
+                            <option value="Li">Li</option>
+                            <option value="Be">Be</option>
+                            <option value="B">B</option>
+                            <option value="C" selected>C</option>
+                            <option value="N">N</option>
+                            <option value="O">O</option>
+                            <option value="F">F</option>
+                            <option value="Ne">Ne</option>
+                        </optgroup>
+                        <optgroup label="Row 3">
+                            <option value="Na">Na</option>
+                            <option value="Mg">Mg</option>
+                            <option value="Al">Al</option>
+                            <option value="Si">Si</option>
+                            <option value="P">P</option>
+                            <option value="S">S</option>
+                            <option value="Cl">Cl</option>
+                            <option value="Ar">Ar</option>
+                        </optgroup>
+                        <optgroup label="Row 4">
+                            <option value="K">K</option>
+                            <option value="Ca">Ca</option>
+                            <option value="Sc">Sc</option>
+                            <option value="Ti">Ti</option>
+                            <option value="V">V</option>
+                            <option value="Cr">Cr</option>
+                            <option value="Mn">Mn</option>
+                            <option value="Fe">Fe</option>
+                            <option value="Co">Co</option>
+                            <option value="Ni">Ni</option>
+                            <option value="Cu">Cu</option>
+                            <option value="Zn">Zn</option>
+                            <option value="Ga">Ga</option>
+                            <option value="Ge">Ge</option>
+                            <option value="As">As</option>
+                            <option value="Se">Se</option>
+                            <option value="Br">Br</option>
+                            <option value="Kr">Kr</option>
+                        </optgroup>
+                        <optgroup label="Row 5">
+                            <option value="Rb">Rb</option>
+                            <option value="Sr">Sr</option>
+                            <option value="Y">Y</option>
+                            <option value="Zr">Zr</option>
+                            <option value="Nb">Nb</option>
+                            <option value="Mo">Mo</option>
+                            <option value="Tc">Tc</option>
+                            <option value="Ru">Ru</option>
+                            <option value="Rh">Rh</option>
+                            <option value="Pd">Pd</option>
+                            <option value="Ag">Ag</option>
+                            <option value="Cd">Cd</option>
+                            <option value="In">In</option>
+                            <option value="Sn">Sn</option>
+                            <option value="Sb">Sb</option>
+                            <option value="Te">Te</option>
+                            <option value="I">I</option>
+                            <option value="Xe">Xe</option>
+                        </optgroup>
+                        <optgroup label="Row 6">
+                            <option value="Cs">Cs</option>
+                            <option value="Ba">Ba</option>
+                            <option value="La">La</option>
+                            <option value="Ce">Ce</option>
+                            <option value="Pr">Pr</option>
+                            <option value="Nd">Nd</option>
+                            <option value="Pm">Pm</option>
+                            <option value="Sm">Sm</option>
+                            <option value="Eu">Eu</option>
+                            <option value="Gd">Gd</option>
+                            <option value="Tb">Tb</option>
+                            <option value="Dy">Dy</option>
+                            <option value="Ho">Ho</option>
+                            <option value="Er">Er</option>
+                            <option value="Tm">Tm</option>
+                            <option value="Yb">Yb</option>
+                            <option value="Lu">Lu</option>
+                            <option value="Hf">Hf</option>
+                            <option value="Ta">Ta</option>
+                            <option value="W">W</option>
+                            <option value="Re">Re</option>
+                            <option value="Os">Os</option>
+                            <option value="Ir">Ir</option>
+                            <option value="Pt">Pt</option>
+                            <option value="Au">Au</option>
+                            <option value="Hg">Hg</option>
+                            <option value="Tl">Tl</option>
+                            <option value="Pb">Pb</option>
+                            <option value="Bi">Bi</option>
+                            <option value="Po">Po</option>
+                            <option value="At">At</option>
+                            <option value="Rn">Rn</option>
+                        </optgroup>
+                        <optgroup label="Row 7">
+                            <option value="Fr">Fr</option>
+                            <option value="Ra">Ra</option>
+                            <option value="Ac">Ac</option>
+                            <option value="Th">Th</option>
+                            <option value="Pa">Pa</option>
+                            <option value="U">U</option>
+                            <option value="Np">Np</option>
+                            <option value="Pu">Pu</option>
+                            <option value="Am">Am</option>
+                            <option value="Cm">Cm</option>
+                            <option value="Bk">Bk</option>
+                            <option value="Cf">Cf</option>
+                            <option value="Es">Es</option>
+                            <option value="Fm">Fm</option>
+                            <option value="Md">Md</option>
+                            <option value="No">No</option>
+                            <option value="Lr">Lr</option>
+                            <option value="Rf">Rf</option>
+                            <option value="Db">Db</option>
+                            <option value="Sg">Sg</option>
+                            <option value="Bh">Bh</option>
+                            <option value="Hs">Hs</option>
+                            <option value="Mt">Mt</option>
+                            <option value="Ds">Ds</option>
+                            <option value="Rg">Rg</option>
+                            <option value="Cn">Cn</option>
+                            <option value="Nh">Nh</option>
+                            <option value="Fl">Fl</option>
+                            <option value="Mc">Mc</option>
+                            <option value="Lv">Lv</option>
+                            <option value="Ts">Ts</option>
+                            <option value="Og">Og</option>
+                        </optgroup>
+                    </select><br>
+                    <label for="chargeSelect">Charge</label>
+                    <input id="chargeSelect" type="number" step="1" value="0"><br>
+                    <button id="addAtom" class="btn btn-primary">Add Atom</button>
+                </div>
+                <div class="widthTransistion" id="addBondsPage" style="width: 0px;">
+                    <label for="bondType">Bond</label>
+                    <select id="bondType">
+                        <option value="0">Remove</option>
+                        <option value="1" selected>Single</option>
+                        <option value="2">Double</option>
+                        <option value="3">Triple</option>
+                        <option value="4">Quadruple</option>
+                        <option value="5">Dative</option>
+                        <option value="6">Complex</option>
+                        <option value="7">Ionic</option>
+                    </select>
+                    <p>Drag one atom over another to change their bond,<br>the atoms will turn blue, release the mouse to modify.</p>
+                </div>
+            </div>
+            <button id="clear" class="btn btn-danger">Clear</button>
+            <button id="swell" class="btn btn-secondary">Swell Atoms</button>
+        </div>
+    </div>
+</body>
+<script src='main.js'></script>
+<script src='buttons.js'></script>
+
+</html>

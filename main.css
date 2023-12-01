@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(187, 255, 255);
+}
+
+img {
+    border: 3px solid black;
+}
+
+canvas {
+    background-image: radial-gradient(circle at center, white 0px, white 70%, rgb(221, 221, 221) 100%);
+    border: 5px solid red;
+}
+
+.widthTransistion {
+    overflow: clip;
+    text-wrap: nowrap;
+    transition: width 1s 0s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+#pubchemPage {
+    background-color: rgb(187, 255, 187);
+}
+
+#addAtomsPage {
+    background-color: rgb(255, 153, 0);
+}
+
+#addBondsPage {
+    background-color: rgb(244, 212, 164);
+}
+
+button.tab {
+    padding-right: 5px;
+    border-top-right-radius: 25% 100%;
+}
